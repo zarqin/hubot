@@ -10,6 +10,7 @@
 
 module.exports = (robot) ->
 
+<<<<<<< HEAD
   robot.respond /weather me (.*)?/i, (res) ->
     city = res.match[1]
     if city == undefined
@@ -19,6 +20,10 @@ module.exports = (robot) ->
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+=======
+ robot.hear /badger/i, (res) ->
+   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+>>>>>>> 90469cc40fff3bca1f55870e7e2a778b5a795bc3
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
@@ -111,3 +116,12 @@ module.exports = (robot) ->
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
   #   res.reply 'zzzzz'
+
+  # Cowsay some stuff
+  # Alex..
+  robot.respond /cowsay( me)? (.*)/i, (msg) ->
+    msg
+      .http("http://cowsay.morecode.org/say")
+      .query(format: 'text', message: msg.match[2])
+      .get() (err, res, body) ->
+        msg.send "```\n#{body}\n```"
