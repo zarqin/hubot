@@ -10,7 +10,10 @@
 
 module.exports = (robot) ->
 
-  robot.hear /Amsterdam weather/i, (res) ->
+  robot.respond /weather me (.*)?/i, (res) ->
+    city = res.match[1]
+    if city == undefined
+      city = "Amsterdam,nl"
     robot.http("http://api.openweathermap.org/data/2.5/weather").query(q: "Amsterdam,nl").get() (err, http_res, body) ->
       res.send "Weather response: #{body}?"
 
