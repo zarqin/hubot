@@ -104,3 +104,12 @@ module.exports = (robot) ->
   # robot.respond /sleep it off/i, (res) ->
   #   robot.brain.set 'totalSodas', 0
   #   res.reply 'zzzzz'
+
+  # Cowsay some stuff
+  # Alex..
+  robot.respond /cowsay( me)? (.*)/i, (msg) ->
+    msg
+      .http("http://cowsay.morecode.org/say")
+      .query(format: 'text', message: msg.match[2])
+      .get() (err, res, body) ->
+        msg.send "```\n#{body}\n```"
