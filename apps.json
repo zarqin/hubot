@@ -1,0 +1,10 @@
+{
+  "hubot": {
+    "provider": "heroku",
+    "auto_merge": false,
+    "repository": "chatops-amsterdam/hubot",
+    "environments": ["production"],
+
+    "heroku_production_name": "hubot-chatops-amsterdam"
+  }
+}
