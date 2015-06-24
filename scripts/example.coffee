@@ -11,10 +11,8 @@
 module.exports = (robot) ->
 
   robot.hear /Amsterdam weather/i, (res) ->
-    robot.http("http://api.openweathermap.org/data/2.5/weather")
-    .query(q: "Amsterdam,nl")
-    .get() (err, res, body) ->
-      res.send "Weather response: " + body
+    robot.http("http://api.openweathermap.org/data/2.5/weather").query(q: "Amsterdam,nl").get() (err, res, body) ->
+      res.send "Weather response: #{body}?"
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
